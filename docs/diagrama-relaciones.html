@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diagrama de relaciones | Gestión de Productos</title>
+  <link rel="stylesheet" href="diagrama-relaciones.css">
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">Modelo de datos</p>
+      <h1>Gestión de Productos</h1>
+      <p class="subtitle">Relaciones entre categorías, productos, proveedores y etiquetas.</p>
+    </header>
+
+    <section class="diagram" aria-label="Diagrama entidad relación">
+      <article class="entity categoria">
+        <div class="entity__header"><span class="icon">C</span><h2>Categoría</h2></div>
+        <ul><li><strong>PK</strong> id</li><li>nombre</li><li>activa</li></ul>
+      </article>
+
+      <div class="relationship categoria-producto"><span class="cardinality">1</span><span class="line"></span><span class="label">clasifica</span><span class="line"></span><span class="cardinality">N</span></div>
+
+      <article class="entity producto featured">
+        <div class="entity__header"><span class="icon">P</span><h2>Producto</h2></div>
+        <ul>
+          <li><strong>PK</strong> id</li><li>codigo <em>único</em></li><li>nombre</li><li>precio_venta</li><li>existencia</li><li><strong>FK</strong> categoria_id</li><li><strong>FK</strong> proveedor_id <em>opcional</em></li>
+        </ul>
+      </article>
+
+      <div class="relationship producto-proveedor"><span class="cardinality">N</span><span class="line"></span><span class="label">es suministrado por</span><span class="line"></span><span class="cardinality">1</span></div>
+
+      <article class="entity proveedor">
+        <div class="entity__header"><span class="icon">Pr</span><h2>Proveedor</h2></div>
+        <ul><li><strong>PK</strong> id</li><li>nombre</li><li>telefono</li><li>correo</li><li>activo</li></ul>
+      </article>
+
+      <div class="relationship producto-etiqueta"><span class="cardinality">N</span><span class="line"></span><span class="label">se etiqueta con</span><span class="line"></span><span class="cardinality">N</span></div>
+
+      <article class="entity etiqueta">
+        <div class="entity__header"><span class="icon">E</span><h2>Etiqueta</h2></div>
+        <ul><li><strong>PK</strong> id</li><li>nombre <em>único</em></li></ul>
+      </article>
+
+      <article class="entity junction">
+        <div class="entity__header"><span class="icon">N:N</span><h2>producto_etiqueta</h2></div>
+        <ul><li><strong>PK / FK</strong> producto_id</li><li><strong>PK / FK</strong> etiqueta_id</li></ul>
+      </article>
+    </section>
+
+    <section class="legend" aria-label="Leyenda">
+      <div><span class="legend__dot primary"></span><span>Entidad principal</span></div>
+      <div><span class="legend__dot"></span><span>Entidad</span></div>
+      <div><span class="legend__line"></span><span>Relación</span></div>
+      <div><kbd>PK</kbd><span>Clave primaria</span></div>
+      <div><kbd>FK</kbd><span>Clave foránea</span></div>
+    </section>
+  </main>
+</body>
+</html>

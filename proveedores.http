@@ -1,0 +1,46 @@
+@baseUrl = http://localhost:8080
+@categoriaId = 1
+
+# La categoria debe existir. Cambia los codigos si vuelves a ejecutar los POST.
+
+### Crear proveedor A con un producto asociado
+POST {{baseUrl}}/api/proveedores
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Proveedor de ejemplo A",
+  "telefono": "+505 2222-1001",
+  "correo": "proveedor.a@example.com",
+  "activo": true,
+  "productos": [
+    {
+      "codigo": "PROV-A-001",
+      "nombre": "Teclado USB",
+      "categoria": { "id": {{categoriaId}} },
+      "precioVenta": 25.00,
+      "existencia": 20
+    }
+  ]
+}
+
+### Crear proveedor B con un producto asociado
+POST {{baseUrl}}/api/proveedores
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Proveedor de ejemplo B",
+  "telefono": "+505 2222-1002",
+  "correo": "proveedor.b@example.com",
+  "activo": true,
+  "productos": [
+    {
+      "codigo": "PROV-B-001",
+      "nombre": "Mouse USB",
+      "categoria": { "id": {{categoriaId}} },
+      "precioVenta": 15.00,
+      "existencia": 30
+    }
+  ]
+}

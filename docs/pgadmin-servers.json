@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "gestion-productos",
+      "Group": "Servidores",
+      "Host": "postgres",
+      "Port": 5432,
+      "MaintenanceDB": "gestion_productos",
+      "Username": "postgres",
+      "SSLMode": "prefer"
+    }
+  }
+}

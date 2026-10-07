@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: gestion-productos-postgres
+    environment:
+      POSTGRES_DB: gestion_productos
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - gestion_productos_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d gestion_productos"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: gestion-productos-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: postgres
+    ports:
+      - "5050:80"
+    volumes:
+      - gestion_productos_pgadmin_data:/var/lib/pgadmin
+      - ./docs/pgadmin-servers.json:/pgadmin4/servers.json:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  gestion_productos_postgres_data:
+  gestion_productos_pgadmin_data:
+
+

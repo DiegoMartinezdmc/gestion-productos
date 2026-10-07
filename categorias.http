@@ -1,0 +1,32 @@
+@baseUrl = http://localhost:8080
+
+### Listar todas las categorias
+GET {{baseUrl}}/api/categorias
+Accept: application/json
+
+### Crear una categoria
+POST {{baseUrl}}/api/categorias
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Monitores",
+  "activa": true
+}
+
+### Crear un producto
+# Usa el id de una categoria existente y un codigo de producto unico.
+POST {{baseUrl}}/api/productos
+Content-Type: application/json
+Accept: application/json
+
+{
+    "codigo": "LAP-001",
+    "nombre": "Laptop Lenovo",
+    "categoria": {
+        "id": 1
+    },
+    "precioVenta": 850.00,
+    "existencia": 10
+}
+

@@ -1,0 +1,44 @@
+@baseUrl = http://localhost:8080
+
+### Listar todos los productos
+GET {{baseUrl}}/api/productos
+Accept: application/json
+
+### Buscar producto con ID 1
+GET {{baseUrl}}/api/productos/1
+Accept: application/json
+
+### Crear un producto usando ProductoRequestDTO
+# La categoria debe existir y el codigo debe ser unico.
+POST {{baseUrl}}/api/productos
+Content-Type: application/json
+Accept: application/json
+
+{
+    "codigo": "TEC-001",
+    "nombre": "Teclado mecánico",
+    "precioVenta": 75.50,
+    "existencia": 20,
+    "categoriaId": 2
+}
+
+### Actualizar producto con ID 1
+# La categoria debe existir y el codigo no debe pertenecer a otro producto.
+PUT {{baseUrl}}/api/productos/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "codigo": "LAP-001",
+  "nombre": "Laptop Lenovo actualizada",
+  "precioVenta": 900.00,
+  "existencia": 15,
+  "categoriaId": 1
+}
+
+### Eliminar producto con ID 1
+DELETE {{baseUrl}}/api/productos/1
+
+### Listar productos de la categoria con ID 1
+GET {{baseUrl}}/api/productos/categoria/1
+Accept: application/json

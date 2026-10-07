@@ -1,0 +1,68 @@
+@baseUrl = http://localhost:8080
+
+### Crear una etiqueta (POST independiente)
+POST {{baseUrl}}/api/etiquetas
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Nueva etiqueta"
+}
+
+# Las siguientes cinco peticiones se ejecutan por separado.
+# Estos nombres ya existen en la base local; deben ser unicos.
+
+### Crear etiqueta Oferta
+POST {{baseUrl}}/api/etiquetas
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Oferta"
+}
+
+### Crear etiqueta Importado
+POST {{baseUrl}}/api/etiquetas
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Importado"
+}
+
+### Crear etiqueta Empresarial
+POST {{baseUrl}}/api/etiquetas
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Empresarial"
+}
+
+### Crear etiqueta Portátil
+POST {{baseUrl}}/api/etiquetas
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Portátil"
+}
+
+### Crear etiqueta Gaming
+POST {{baseUrl}}/api/etiquetas
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Gaming"
+}
+### Asociar etiqueta con ID 1 al producto con ID 2
+POST {{baseUrl}}/api/productos/2/etiquetas/1
+Accept: application/json
+
+### Consultar productos asociados a la etiqueta con ID 1
+GET {{baseUrl}}/api/productos/etiqueta/1
+Accept: application/json
+
+### Eliminar la asociacion entre el producto con ID 2 y la etiqueta con ID 1
+DELETE {{baseUrl}}/api/productos/2/etiquetas/1
